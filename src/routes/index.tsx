@@ -445,7 +445,7 @@ function CharacterSheet() {
 						<div className="space-y-4">
 							<div>
 								<div className="flex items-center justify-between mb-2">
-									<h3 className="text-sm font-bold uppercase tracking-wide">Attributes</h3>
+									<h2 className="text-sm font-bold uppercase tracking-wide">Attributes</h2>
 									<button
 										type="button"
 										onClick={randomizeAttributes}
@@ -491,7 +491,7 @@ function CharacterSheet() {
 							</div>
 
 							<div>
-								<h3 className="text-sm font-bold mb-2 uppercase tracking-wide">Saving Throws</h3>
+								<h2 className="text-sm font-bold mb-2 uppercase tracking-wide">Saving Throws</h2>
 								<div className="space-y-1">
 									{ATTRIBUTES.map((attr) => {
 										const saveMod = getSaveModifier(attr.key)
@@ -520,7 +520,7 @@ function CharacterSheet() {
 						{/* Middle Column - Combat & Skills */}
 						<div className="space-y-4">
 							<div>
-								<h3 className="text-sm font-bold mb-2 uppercase tracking-wide">Combat</h3>
+								<h2 className="text-sm font-bold mb-2 uppercase tracking-wide">Combat</h2>
 								<div className="grid grid-cols-3 gap-2 mb-3">
 									<div className="text-center">
 										<Label htmlFor="ac" className="text-xs">AC</Label>
@@ -635,7 +635,7 @@ function CharacterSheet() {
 							</div>
 
 							<div>
-								<h3 className="text-sm font-bold mb-2 uppercase tracking-wide">Skills</h3>
+								<h2 className="text-sm font-bold mb-2 uppercase tracking-wide">Skills</h2>
 								<div className="space-y-0.5 text-xs">
 									{SKILLS.map((skill) => {
 										const skillMod = getSkillModifier(skill)
@@ -643,10 +643,12 @@ function CharacterSheet() {
 										const hasRacialProf = racialSkillProficiencies.includes(skill.name)
 										const attrLabel = skill.attr.toUpperCase()
 										return (
-											<div
+											<button
 												key={skill.name}
-												className="flex items-center gap-1 cursor-pointer hover:bg-muted px-1 py-0.5"
+												type="button"
+												className="flex items-center gap-1 cursor-pointer hover:bg-muted px-1 py-0.5 w-full text-left"
 												onClick={() => cycleSkillProficiency(skill.name)}
+												aria-label={`${skill.name}: ${profLevel === 'expertise' ? 'expertise' : profLevel === 'proficient' ? 'proficient' : 'not proficient'}. Click to cycle.`}
 											>
 												<div className="w-4 text-center">
 													{profLevel === 'expertise' ? '◆' : profLevel === 'proficient' ? '●' : hasRacialProf ? '○' : '○'}
@@ -655,7 +657,7 @@ function CharacterSheet() {
 													{skill.name} <span className="text-muted-foreground">({attrLabel})</span>
 												</span>
 												<span className="font-bold w-6 text-right">{formatModifier(skillMod)}</span>
-											</div>
+											</button>
 										)
 									})}
 								</div>
@@ -669,7 +671,7 @@ function CharacterSheet() {
 						<div className="space-y-4">
 							<div>
 								<div className="flex items-center justify-between mb-2">
-									<h3 className="text-sm font-bold uppercase tracking-wide">Attacks</h3>
+									<h2 className="text-sm font-bold uppercase tracking-wide">Attacks</h2>
 									<button
 										type="button"
 										onClick={addWeapon}
@@ -734,7 +736,7 @@ function CharacterSheet() {
 
 							<div>
 								<div className="flex items-center justify-between mb-2">
-									<h3 className="text-sm font-bold uppercase tracking-wide">Feats & Features</h3>
+									<h2 className="text-sm font-bold uppercase tracking-wide">Feats & Features</h2>
 									<button
 										type="button"
 										onClick={addFeat}
