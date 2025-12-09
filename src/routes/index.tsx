@@ -449,7 +449,8 @@ function CharacterSheet() {
 									<button
 										type="button"
 										onClick={randomizeAttributes}
-										className="text-xs bg-accent text-accent-foreground px-2 py-1 border-2 hover:bg-accent/80"
+										aria-label="Randomize attributes using point buy"
+										className="text-xs bg-accent text-accent-foreground px-3 py-1.5 border-2 hover:bg-accent/80"
 									>
 										Random
 									</button>
@@ -462,8 +463,9 @@ function CharacterSheet() {
 										const hasBonus = totalValue !== baseValue
 										return (
 											<div key={attr.key} className="flex items-center gap-2">
-												<div className="w-10 text-xs font-bold">{attr.name}</div>
+												<label htmlFor={`attr-${attr.key}`} className="w-10 text-xs font-bold">{attr.name}</label>
 												<Input
+													id={`attr-${attr.key}`}
 													type="number"
 													min={1}
 													max={20}
@@ -521,8 +523,9 @@ function CharacterSheet() {
 								<h3 className="text-sm font-bold mb-2 uppercase tracking-wide">Combat</h3>
 								<div className="grid grid-cols-3 gap-2 mb-3">
 									<div className="text-center">
-										<Label className="text-xs">AC</Label>
+										<Label htmlFor="ac" className="text-xs">AC</Label>
 										<Input
+											id="ac"
 											type="number"
 											value={armorClass}
 											onChange={(e) => setArmorClass(parseInt(e.target.value) || 10)}
@@ -545,8 +548,9 @@ function CharacterSheet() {
 
 								<div className="grid grid-cols-3 gap-2 mb-2">
 									<div>
-										<Label className="text-xs">HP Max</Label>
+										<Label htmlFor="hp-max" className="text-xs">HP Max</Label>
 										<Input
+											id="hp-max"
 											type="number"
 											value={hitPointMax}
 											onChange={(e) => setHitPointMax(parseInt(e.target.value) || 1)}
@@ -554,8 +558,9 @@ function CharacterSheet() {
 										/>
 									</div>
 									<div>
-										<Label className="text-xs">Current</Label>
+										<Label htmlFor="hp-current" className="text-xs">Current</Label>
 										<Input
+											id="hp-current"
 											type="number"
 											value={currentHitPoints}
 											onChange={(e) => setCurrentHitPoints(parseInt(e.target.value) || 0)}
@@ -563,8 +568,9 @@ function CharacterSheet() {
 										/>
 									</div>
 									<div>
-										<Label className="text-xs">Temp HP</Label>
+										<Label htmlFor="hp-temp" className="text-xs">Temp HP</Label>
 										<Input
+											id="hp-temp"
 											type="number"
 											value={tempHitPoints}
 											onChange={(e) => setTempHitPoints(parseInt(e.target.value) || 0)}
@@ -586,8 +592,9 @@ function CharacterSheet() {
 										</div>
 									</div>
 									<div>
-										<Label className="text-xs">Used</Label>
+										<Label htmlFor="hit-dice-used" className="text-xs">Used</Label>
 										<Input
+											id="hit-dice-used"
 											type="number"
 											min={0}
 											max={hitDiceTotal}
@@ -608,6 +615,7 @@ function CharacterSheet() {
 													key={`success-${i}`}
 													checked={deathSaveSuccesses[i]}
 													onCheckedChange={() => toggleDeathSave('success', i)}
+													aria-label={`Death save success ${i + 1}`}
 												/>
 											))}
 										</div>
@@ -618,6 +626,7 @@ function CharacterSheet() {
 													key={`failure-${i}`}
 													checked={deathSaveFailures[i]}
 													onCheckedChange={() => toggleDeathSave('failure', i)}
+													aria-label={`Death save failure ${i + 1}`}
 												/>
 											))}
 										</div>
@@ -664,7 +673,8 @@ function CharacterSheet() {
 									<button
 										type="button"
 										onClick={addWeapon}
-										className="text-xs bg-accent text-accent-foreground px-2 py-1 border-2 hover:bg-accent/80"
+										aria-label="Add weapon"
+										className="text-xs bg-accent text-accent-foreground px-3 py-1.5 border-2 hover:bg-accent/80"
 									>
 										+ Add
 									</button>
@@ -673,43 +683,48 @@ function CharacterSheet() {
 									{weapons.map((weapon, index) => {
 										const isEmpty = !weapon.name && !weapon.attackBonus && !weapon.damage && !weapon.type
 										return (
-											<div key={index} className="space-y-1 pb-2 border-b border-border last:border-0 last:pb-0">
+											<div key={index} className="space-y-4 pb-2 border-b border-border last:border-0 last:pb-0">
 												<div className="flex gap-1">
 													<Input
 														value={weapon.name}
 														onChange={(e) => updateWeapon(index, 'name', e.target.value)}
 														placeholder="Weapon"
+														aria-label={`Weapon ${index + 1} name`}
 														className="text-sm flex-1"
 													/>
 													{isEmpty && weapons.length > 1 && (
 														<button
 															type="button"
 															onClick={() => removeWeapon(index)}
-															className="text-sm px-1 font-extrabold hover:bg-muted"
+															aria-label="Remove weapon"
+															className="text-sm px-2 py-1 ml-1 font-extrabold hover:bg-muted"
 														>
 															−
 														</button>
 													)}
 												</div>
 												<div className="grid grid-cols-3 gap-1">
-													<Input
-														value={weapon.attackBonus}
-														onChange={(e) => updateWeapon(index, 'attackBonus', e.target.value)}
-														placeholder="+5"
-														className="text-xs"
-													/>
-													<Input
-														value={weapon.damage}
-														onChange={(e) => updateWeapon(index, 'damage', e.target.value)}
-														placeholder="1d8+3"
-														className="text-xs"
-													/>
-													<Input
-														value={weapon.type}
-														onChange={(e) => updateWeapon(index, 'type', e.target.value)}
-														placeholder="Slash"
-														className="text-xs"
-													/>
+<Input
+													value={weapon.attackBonus}
+													onChange={(e) => updateWeapon(index, 'attackBonus', e.target.value)}
+													placeholder="+5"
+													aria-label={`Weapon ${index + 1} attack bonus`}
+													className="text-xs"
+												/>
+												<Input
+													value={weapon.damage}
+													onChange={(e) => updateWeapon(index, 'damage', e.target.value)}
+													placeholder="1d8+3"
+													aria-label={`Weapon ${index + 1} damage`}
+													className="text-xs"
+												/>
+												<Input
+													value={weapon.type}
+													onChange={(e) => updateWeapon(index, 'type', e.target.value)}
+													placeholder="Slash"
+													aria-label={`Weapon ${index + 1} damage type`}
+													className="text-xs"
+												/>
 												</div>
 											</div>
 										)
@@ -723,7 +738,8 @@ function CharacterSheet() {
 									<button
 										type="button"
 										onClick={addFeat}
-										className="text-xs bg-accent text-accent-foreground px-2 py-1 border-2 hover:bg-accent/80"
+										aria-label="Add feat"
+										className="text-xs bg-accent text-accent-foreground px-3 py-1.5 border-2 hover:bg-accent/80"
 									>
 										+ Add
 									</button>
@@ -732,19 +748,21 @@ function CharacterSheet() {
 									{feats.map((feat, index) => {
 										const isEmpty = !feat.name && !feat.description
 										return (
-											<div key={index} className="space-y-1 pb-2 border-b border-border last:border-0 last:pb-0">
+											<div key={index} className="space-y-4 pb-2 border-b border-border last:border-0 last:pb-0">
 												<div className="flex gap-1">
 													<Input
 														value={feat.name}
 														onChange={(e) => updateFeat(index, 'name', e.target.value)}
 														placeholder="Feat name"
+														aria-label={`Feat ${index + 1} name`}
 														className="text-sm flex-1"
 													/>
 													{isEmpty && feats.length > 1 && (
 														<button
 															type="button"
 															onClick={() => removeFeat(index)}
-															className="text-sm px-1 font-extrabold hover:bg-muted"
+															aria-label="Remove feat"
+															className="text-sm px-2 py-1 ml-1 font-extrabold hover:bg-muted"
 														>
 															−
 														</button>
@@ -754,6 +772,7 @@ function CharacterSheet() {
 													value={feat.description}
 													onChange={(e) => updateFeat(index, 'description', e.target.value)}
 													placeholder="Notes"
+													aria-label={`Feat ${index + 1} description`}
 													className="text-xs"
 												/>
 											</div>
@@ -763,8 +782,9 @@ function CharacterSheet() {
 							</div>
 
 							<div>
-								<Label className="text-xs">Initiative Bonus</Label>
+								<Label htmlFor="initiative-bonus" className="text-xs">Initiative Bonus</Label>
 								<Input
+									id="initiative-bonus"
 									type="number"
 									value={initiativeBonus}
 									onChange={(e) => setInitiativeBonus(parseInt(e.target.value) || 0)}

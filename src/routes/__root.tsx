@@ -17,8 +17,17 @@ export const Route = createRootRoute({
       {
         title: 'Character Sheet Builder',
       },
+      {
+        name: 'description',
+        content: 'A little 5e character sheet builder',
+      },
     ],
     links: [
+      {
+        rel: 'preload',
+        href: appCss,
+        as: 'style',
+      },
       {
         rel: 'stylesheet',
         href: appCss,
