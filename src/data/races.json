@@ -1,0 +1,249 @@
+{
+	"races": [
+		{
+			"id": "human",
+			"name": "Human",
+			"speed": 30,
+			"attributeBonuses": {
+				"str": 1,
+				"dex": 1,
+				"con": 1,
+				"int": 1,
+				"wis": 1,
+				"cha": 1
+			},
+			"skillProficiencies": [],
+			"languages": ["Common", "One additional"]
+		},
+		{
+			"id": "human-variant",
+			"name": "Human (Variant)",
+			"speed": 30,
+			"attributeBonuses": {
+				"choice1": 1,
+				"choice2": 1
+			},
+			"skillProficiencies": ["choice"],
+			"languages": ["Common", "One additional"],
+			"feat": true
+		},
+		{
+			"id": "elf-high",
+			"name": "Elf (High)",
+			"speed": 30,
+			"attributeBonuses": {
+				"dex": 2,
+				"int": 1
+			},
+			"skillProficiencies": ["Perception"],
+			"languages": ["Common", "Elvish"],
+			"traits": ["Darkvision", "Fey Ancestry", "Trance", "Cantrip"]
+		},
+		{
+			"id": "elf-wood",
+			"name": "Elf (Wood)",
+			"speed": 35,
+			"attributeBonuses": {
+				"dex": 2,
+				"wis": 1
+			},
+			"skillProficiencies": ["Perception"],
+			"languages": ["Common", "Elvish"],
+			"traits": ["Darkvision", "Fey Ancestry", "Trance", "Mask of the Wild"]
+		},
+		{
+			"id": "elf-drow",
+			"name": "Elf (Drow)",
+			"speed": 30,
+			"attributeBonuses": {
+				"dex": 2,
+				"cha": 1
+			},
+			"skillProficiencies": ["Perception"],
+			"languages": ["Common", "Elvish"],
+			"traits": ["Superior Darkvision", "Sunlight Sensitivity", "Drow Magic"]
+		},
+		{
+			"id": "dwarf-hill",
+			"name": "Dwarf (Hill)",
+			"speed": 25,
+			"attributeBonuses": {
+				"con": 2,
+				"wis": 1
+			},
+			"skillProficiencies": [],
+			"languages": ["Common", "Dwarvish"],
+			"traits": ["Darkvision", "Dwarven Resilience", "Dwarven Toughness"],
+			"hpBonus": 1
+		},
+		{
+			"id": "dwarf-mountain",
+			"name": "Dwarf (Mountain)",
+			"speed": 25,
+			"attributeBonuses": {
+				"con": 2,
+				"str": 2
+			},
+			"skillProficiencies": [],
+			"languages": ["Common", "Dwarvish"],
+			"traits": ["Darkvision", "Dwarven Resilience", "Dwarven Armor Training"]
+		},
+		{
+			"id": "halfling-lightfoot",
+			"name": "Halfling (Lightfoot)",
+			"speed": 25,
+			"attributeBonuses": {
+				"dex": 2,
+				"cha": 1
+			},
+			"skillProficiencies": [],
+			"languages": ["Common", "Halfling"],
+			"traits": ["Lucky", "Brave", "Halfling Nimbleness", "Naturally Stealthy"]
+		},
+		{
+			"id": "halfling-stout",
+			"name": "Halfling (Stout)",
+			"speed": 25,
+			"attributeBonuses": {
+				"dex": 2,
+				"con": 1
+			},
+			"skillProficiencies": [],
+			"languages": ["Common", "Halfling"],
+			"traits": ["Lucky", "Brave", "Halfling Nimbleness", "Stout Resilience"]
+		},
+		{
+			"id": "dragonborn",
+			"name": "Dragonborn",
+			"speed": 30,
+			"attributeBonuses": {
+				"str": 2,
+				"cha": 1
+			},
+			"skillProficiencies": [],
+			"languages": ["Common", "Draconic"],
+			"traits": ["Draconic Ancestry", "Breath Weapon", "Damage Resistance"]
+		},
+		{
+			"id": "gnome-forest",
+			"name": "Gnome (Forest)",
+			"speed": 25,
+			"attributeBonuses": {
+				"int": 2,
+				"dex": 1
+			},
+			"skillProficiencies": [],
+			"languages": ["Common", "Gnomish"],
+			"traits": ["Darkvision", "Gnome Cunning", "Natural Illusionist", "Speak with Small Beasts"]
+		},
+		{
+			"id": "gnome-rock",
+			"name": "Gnome (Rock)",
+			"speed": 25,
+			"attributeBonuses": {
+				"int": 2,
+				"con": 1
+			},
+			"skillProficiencies": [],
+			"languages": ["Common", "Gnomish"],
+			"traits": ["Darkvision", "Gnome Cunning", "Artificer's Lore", "Tinker"]
+		},
+		{
+			"id": "half-elf",
+			"name": "Half-Elf",
+			"speed": 30,
+			"attributeBonuses": {
+				"cha": 2,
+				"choice1": 1,
+				"choice2": 1
+			},
+			"skillProficiencies": ["choice", "choice"],
+			"languages": ["Common", "Elvish", "One additional"],
+			"traits": ["Darkvision", "Fey Ancestry"]
+		},
+		{
+			"id": "half-orc",
+			"name": "Half-Orc",
+			"speed": 30,
+			"attributeBonuses": {
+				"str": 2,
+				"con": 1
+			},
+			"skillProficiencies": ["Intimidation"],
+			"languages": ["Common", "Orc"],
+			"traits": ["Darkvision", "Menacing", "Relentless Endurance", "Savage Attacks"]
+		},
+		{
+			"id": "tiefling",
+			"name": "Tiefling",
+			"speed": 30,
+			"attributeBonuses": {
+				"cha": 2,
+				"int": 1
+			},
+			"skillProficiencies": [],
+			"languages": ["Common", "Infernal"],
+			"traits": ["Darkvision", "Hellish Resistance", "Infernal Legacy"]
+		},
+		{
+			"id": "aasimar",
+			"name": "Aasimar",
+			"speed": 30,
+			"attributeBonuses": {
+				"cha": 2
+			},
+			"skillProficiencies": [],
+			"languages": ["Common", "Celestial"],
+			"traits": ["Darkvision", "Celestial Resistance", "Healing Hands", "Light Bearer"]
+		},
+		{
+			"id": "goliath",
+			"name": "Goliath",
+			"speed": 30,
+			"attributeBonuses": {
+				"str": 2,
+				"con": 1
+			},
+			"skillProficiencies": ["Athletics"],
+			"languages": ["Common", "Giant"],
+			"traits": ["Natural Athlete", "Stone's Endurance", "Powerful Build", "Mountain Born"]
+		},
+		{
+			"id": "tabaxi",
+			"name": "Tabaxi",
+			"speed": 30,
+			"attributeBonuses": {
+				"dex": 2,
+				"cha": 1
+			},
+			"skillProficiencies": ["Perception", "Stealth"],
+			"languages": ["Common", "One additional"],
+			"traits": ["Darkvision", "Feline Agility", "Cat's Claws", "Cat's Talent"]
+		},
+		{
+			"id": "kenku",
+			"name": "Kenku",
+			"speed": 30,
+			"attributeBonuses": {
+				"dex": 2,
+				"wis": 1
+			},
+			"skillProficiencies": ["choice", "choice"],
+			"languages": ["Common", "Auran"],
+			"traits": ["Expert Forgery", "Mimicry"]
+		},
+		{
+			"id": "tortle",
+			"name": "Tortle",
+			"speed": 30,
+			"attributeBonuses": {
+				"str": 2,
+				"wis": 1
+			},
+			"skillProficiencies": [],
+			"languages": ["Common", "Aquan"],
+			"traits": ["Claws", "Hold Breath", "Natural Armor", "Shell Defense"],
+			"naturalAC": 17
+		}
+	]
+}
