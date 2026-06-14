@@ -19,18 +19,18 @@ import racesData from '@/data/races.json'
 export const Route = createFileRoute('/')({ component: CharacterSheet })
 
 const CLASSES = [
-	{ id: 'barbarian', name: 'Barbarian', hitDie: 12, saves: ['str', 'con'], primary: ['STR', 'CON'] },
-	{ id: 'bard', name: 'Bard', hitDie: 8, saves: ['dex', 'cha'], primary: ['CHA', 'DEX'] },
-	{ id: 'cleric', name: 'Cleric', hitDie: 8, saves: ['wis', 'cha'], primary: ['WIS', 'CON'] },
-	{ id: 'druid', name: 'Druid', hitDie: 8, saves: ['int', 'wis'], primary: ['WIS', 'CON'] },
-	{ id: 'fighter', name: 'Fighter', hitDie: 10, saves: ['str', 'con'], primary: ['STR or DEX', 'CON'] },
-	{ id: 'monk', name: 'Monk', hitDie: 8, saves: ['str', 'dex'], primary: ['DEX', 'WIS'] },
-	{ id: 'paladin', name: 'Paladin', hitDie: 10, saves: ['wis', 'cha'], primary: ['STR', 'CHA'] },
-	{ id: 'ranger', name: 'Ranger', hitDie: 10, saves: ['str', 'dex'], primary: ['DEX or STR', 'WIS'] },
-	{ id: 'rogue', name: 'Rogue', hitDie: 8, saves: ['dex', 'int'], primary: ['DEX', 'CON'] },
-	{ id: 'sorcerer', name: 'Sorcerer', hitDie: 6, saves: ['con', 'cha'], primary: ['CHA', 'CON'] },
-	{ id: 'warlock', name: 'Warlock', hitDie: 8, saves: ['wis', 'cha'], primary: ['CHA', 'CON'] },
-	{ id: 'wizard', name: 'Wizard', hitDie: 6, saves: ['int', 'wis'], primary: ['INT', 'CON'] },
+	{ id: 'barbarian', name: 'Barbarian', hitDie: 12, saves: ['str', 'con'] },
+	{ id: 'bard', name: 'Bard', hitDie: 8, saves: ['dex', 'cha'] },
+	{ id: 'cleric', name: 'Cleric', hitDie: 8, saves: ['wis', 'cha'] },
+	{ id: 'druid', name: 'Druid', hitDie: 8, saves: ['int', 'wis'] },
+	{ id: 'fighter', name: 'Fighter', hitDie: 10, saves: ['str', 'con'] },
+	{ id: 'monk', name: 'Monk', hitDie: 8, saves: ['str', 'dex'] },
+	{ id: 'paladin', name: 'Paladin', hitDie: 10, saves: ['wis', 'cha'] },
+	{ id: 'ranger', name: 'Ranger', hitDie: 10, saves: ['str', 'dex'] },
+	{ id: 'rogue', name: 'Rogue', hitDie: 8, saves: ['dex', 'int'] },
+	{ id: 'sorcerer', name: 'Sorcerer', hitDie: 6, saves: ['con', 'cha'] },
+	{ id: 'warlock', name: 'Warlock', hitDie: 8, saves: ['wis', 'cha'] },
+	{ id: 'wizard', name: 'Wizard', hitDie: 6, saves: ['int', 'wis'] },
 ]
 
 const SECTIONS = [
@@ -404,10 +404,6 @@ function CharacterSheet() {
 	const hitDiceTotal = level
 	const hitDiceRemaining = hitDiceTotal - hitDiceUsed
 	const hitDie = selectedClassData?.hitDie ?? 8
-	const classDefaults = selectedClassData
-		? `${selectedClassData.name}: d${selectedClassData.hitDie} hit die · saves ${selectedClassData.saves.map((save) => save.toUpperCase()).join(', ')} · focus ${selectedClassData.primary.join(' / ')}`
-		: 'Choose a class to fill saves, hit die, and suggested HP.'
-
 	function applySheetState(state: CharacterSheetState) {
 		setCharacterName(state.characterName)
 		setCharacterClass(state.characterClass)
@@ -627,7 +623,7 @@ function CharacterSheet() {
 						<a
 							key={section.id}
 							href={`#${section.id}`}
-							className="shrink-0 border-2 bg-card px-3 py-2 text-xs font-bold hover:bg-muted focus-visible:ring-ring/50 focus-visible:ring-[3px]"
+							className="shrink-0 border-2 bg-accent px-3 py-2 text-xs font-bold text-accent-foreground hover:bg-accent/80 focus-visible:ring-ring/50 focus-visible:ring-[3px]"
 						>
 							{section.label}
 						</a>
@@ -642,16 +638,16 @@ function CharacterSheet() {
 							Autosaves locally. {saveStatus}. Racial bonuses are automatic. Click skills to cycle proficiency.
 						</CardDescription>
 						<div className="flex flex-wrap gap-2">
-							<button type="button" onClick={copyShareLink} className="border-2 bg-card px-3 py-2 text-xs font-bold hover:bg-muted">
+							<button type="button" onClick={copyShareLink} className="border-2 bg-accent px-3 py-2 text-xs font-bold text-accent-foreground hover:bg-accent/80">
 								Share
 							</button>
-							<button type="button" onClick={exportSheet} className="border-2 bg-card px-3 py-2 text-xs font-bold hover:bg-muted">
+							<button type="button" onClick={exportSheet} className="border-2 bg-accent px-3 py-2 text-xs font-bold text-accent-foreground hover:bg-accent/80">
 								Export
 							</button>
-							<button type="button" onClick={() => fileInputRef.current?.click()} className="border-2 bg-card px-3 py-2 text-xs font-bold hover:bg-muted">
+							<button type="button" onClick={() => fileInputRef.current?.click()} className="border-2 bg-accent px-3 py-2 text-xs font-bold text-accent-foreground hover:bg-accent/80">
 								Import
 							</button>
-							<button type="button" onClick={clearSavedSheet} className="border-2 bg-card px-3 py-2 text-xs font-bold hover:bg-muted">
+							<button type="button" onClick={clearSavedSheet} className="border-2 bg-accent px-3 py-2 text-xs font-bold text-accent-foreground hover:bg-accent/80">
 								New
 							</button>
 						</div>
@@ -664,9 +660,6 @@ function CharacterSheet() {
 							aria-label="Import character sheet JSON"
 						/>
 					</div>
-					<CardDescription className="mt-3 border-2 bg-muted p-2 text-xs">
-						{classDefaults}
-					</CardDescription>
 				</CardHeader>
 				<CardContent className="space-y-6">
 					{/* Character Info Section */}
@@ -867,7 +860,7 @@ function CharacterSheet() {
 												<button
 													type="button"
 													onClick={() => rollCheck(`${attr.fullName} save`, saveMod)}
-													className="w-12 border-2 bg-card px-1 py-1 text-right text-xs font-bold hover:bg-muted"
+													className="w-12 border-2 bg-accent px-1 py-1 text-right text-xs font-bold text-accent-foreground hover:bg-accent/80"
 													aria-label={`Roll ${attr.fullName} saving throw`}
 												>
 													{formatModifier(saveMod)}
@@ -962,7 +955,7 @@ function CharacterSheet() {
 												setHitPointMax(suggestedHP)
 												setCurrentHitPoints(suggestedHP)
 											}}
-											className="border-2 bg-card px-2 py-1 font-bold text-foreground hover:bg-muted"
+											className="border-2 bg-accent px-2 py-1 font-bold text-accent-foreground hover:bg-accent/80"
 										>
 											Use
 										</button>
@@ -1049,7 +1042,7 @@ function CharacterSheet() {
 											<button
 												type="button"
 												onClick={() => rollCheck(skill.name, skillMod)}
-												className="w-12 border-2 bg-card px-1 py-1 text-right font-bold hover:bg-muted"
+											className="w-12 border-2 bg-accent px-1 py-1 text-right font-bold text-accent-foreground hover:bg-accent/80"
 												aria-label={`Roll ${skill.name}`}
 											>
 												{formatModifier(skillMod)}
@@ -1127,7 +1120,7 @@ function CharacterSheet() {
 													<button
 														type="button"
 														onClick={() => rollCheck(weapon.name || `Attack ${index + 1}`, Number.parseInt(weapon.attackBonus, 10) || 0)}
-														className="border-2 bg-card px-2 py-1 text-xs font-bold hover:bg-muted"
+														className="border-2 bg-accent px-2 py-1 text-xs font-bold text-accent-foreground hover:bg-accent/80"
 														aria-label={`Roll weapon ${index + 1} attack`}
 													>
 														Roll
